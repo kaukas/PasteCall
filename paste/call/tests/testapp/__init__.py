@@ -7,6 +7,8 @@ def app_factory(global_config, **local_config):
     gconf['db'] = local_config.get('db')
     return None
 
-def exec_in_environ(*args, **kargs):
+def exec_in_environ(job=None):
+    if not job:
+        job = 'Using'
     print 'Working in app status %s' % gconf['status']
-    print 'Using db: %s' % gconf['db']
+    print '%s db: %s' % (job, gconf['db'])

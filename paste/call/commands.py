@@ -5,7 +5,7 @@ from pkg_resources import EntryPoint
 
 
 class CallEP(Command):
-    min_args = max_args = 1
+    min_args = 1
 
     usage = 'entry.point:foo'
     summary = 'Execute the supplied entry point'
@@ -23,7 +23,7 @@ class CallEP(Command):
         callable = ep.load(require=False)
         if self.options.config:
             self.load_config(self.options.config)
-        callable()
+        callable(*self.args[1:])
 
     def load_config(self, config):
         self.app = loadapp('config:' + config)
