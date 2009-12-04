@@ -17,7 +17,7 @@ class CallEP(Command):
     def command(self):
         r"""Run the actual function.
         """
-        ep_str = self.args
+        ep_str = self.args[0]
         opts = self.options
         ep = EntryPoint.parse('%s=%s' % ('NA', ep_str))
         callable = ep.load(require=False)

@@ -12,7 +12,7 @@ config = os.path.join(os.getcwd(), 'paste', 'call', 'tests', 'testapp.cfg')
 def test_call():
     r"""Test paste call entry point
 
-        >>> p = Popen(paster + ' call paste.cron.tests:afoo', shell=True,
+        >>> p = Popen(paster + ' call paste.call.tests:afoo', shell=True,
         ...     stdout=PIPE, stderr=PIPE)
         >>> stdout, stderr = p.communicate()
         >>> print stderr
