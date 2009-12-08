@@ -6,6 +6,9 @@ def afoo(what=None, who=None):
         print 'I say %s, %s!' % (what, who)
     print 'I leave'
 
+def areturningfoo():
+    return 'I will return!'
+
 def setup():
     pass
 

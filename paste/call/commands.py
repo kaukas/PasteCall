@@ -23,7 +23,9 @@ class CallEP(Command):
         callable = ep.load(require=False)
         if self.options.config:
             self.load_config(self.options.config)
-        callable(*self.args[1:])
+        res = callable(*self.args[1:])
+        if res is not None:
+            print res
 
     def load_config(self, config):
         self.app = loadapp('config:' + config)

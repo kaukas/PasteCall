@@ -7,12 +7,12 @@ from subprocess import Popen, PIPE
 import sys
 
 paster = os.path.join(sys.exec_prefix, 'bin', 'paster')
-config = os.path.join(os.getcwd(), 'paste', 'call', 'tests', 'testapp.cfg')
+config = os.path.join(os.path.dirname(__file__), 'testapp.cfg')
 
 def test_call():
     r"""Test paste call entry point
 
-        >>> p = Popen(paster + ' call paste.call.tests:afoo', shell=True,
+        >>> p = Popen(paster + ' call tests:afoo', shell=True,
         ...     stdout=PIPE, stderr=PIPE)
         >>> stdout, stderr = p.communicate()
         >>> print stderr
@@ -24,7 +24,7 @@ def test_call():
 
     We can give parameters to functions
 
-        >>> p = Popen(paster + ' call paste.call.tests:afoo "ho ho" boy',
+        >>> p = Popen(paster + ' call tests:afoo "ho ho" boy',
         ...     shell=True, stdout=PIPE, stderr=PIPE)
         >>> stdout, stderr = p.communicate()
         >>> print stderr
@@ -34,12 +34,24 @@ def test_call():
         I say ho ho, boy!
         I leave
         <BLANKLINE>
+
+    If the function returns any output, PasteCall will print it to stdout
+
+        >>> p = Popen(paster + ' call tests:areturningfoo',
+        ...     shell=True, stdout=PIPE, stderr=PIPE)
+        >>> stdout, stderr = p.communicate()
+        >>> print stderr
+        <BLANKLINE>
+        >>> print stdout
+        I will return!
+        <BLANKLINE>
+        
     """
 
 def test_with_config():
     r"""Test config load before the entry point execution
 
-        >>> ep = 'paste.call.tests.testapp:exec_in_environ'
+        >>> ep = 'tests.testapp:exec_in_environ'
         >>> p = Popen('%s call %s --with-config=%s' % (paster, ep, config),
         ...     shell=True, stdout=PIPE, stderr=PIPE)
         >>> stdout, stderr = p.communicate()
@@ -52,7 +64,7 @@ def test_with_config():
 
     You can also give parameters
 
-        >>> ep = 'paste.call.tests.testapp:exec_in_environ'
+        >>> ep = 'tests.testapp:exec_in_environ'
         >>> p = Popen('%s call %s --with-config=%s Opening' % (paster, ep,
         ...     config), shell=True, stdout=PIPE, stderr=PIPE)
         >>> stdout, stderr = p.communicate()
