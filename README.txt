@@ -16,6 +16,8 @@ Note that entry points will only be found if:
 
         ``$ python setup.py develop/install/etc``
 
+If the callable returns any output it will be printed to stdout.
+
 Mercurial repository can be found at bitbucket.org_
 
 .. _paste script: http://pythonpaste.org/script
