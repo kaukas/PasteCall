@@ -1,0 +1,10 @@
+*.pyc
+*.orig
+*.swp
+/.coverage
+/bin/
+/build/
+/dist/
+/include/
+/lib/
+/PasteCall.egg-info

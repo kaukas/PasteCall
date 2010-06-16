@@ -18,8 +18,8 @@ Note that entry points will only be found if:
 
 If the callable returns any output it will be printed to stdout.
 
-Mercurial repository can be found at bitbucket.org_
+Mercurial repository can be found at GitHub.com_
 
-.. _paste script: http://pythonpaste.org/script
-.. _bitbucket.org: http://bitbucket.org/kaukas/pastecall
+.. _paste script: http://pythonpaste.org/script 
+.. _GitHub.com: http://github.com/kaukas/PasteCall 
 
